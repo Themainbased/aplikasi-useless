@@ -50,19 +50,27 @@ class Welcome extends CI_Controller {
 		$add['kota']	= $this->input->post('kota');
 		$add['telepon']	= $this->input->post('telepon');
 
-		$this->MSudi->AddData('crud_db', $add);
+		$this->MSudi->AddData('penerbit', $add);
 
 		redirect(site_url('Welcome/penerbit'));
 	}
 
 	public function penerbitUpdate()
 	{
-
+		$id_penerbit = $this->input->post('id_penerbit');
+		$update['nama'] = $this->input->post('nama');
+		$update['alamat'] = $this->input->post('alamat');
+		$update['kota'] = $this->input->post('kota');
+		$update['telepon'] = $this->input->post('telepon');
+		$this->MSudi->UpdateData('penerbit','id_penerbit',$id_penerbit, $update);
+		redirect(site_url('Welcome/penerbit'));
 	}
 
 	public function penerbitDelete()
 	{
-
+		$id_penerbit = $this->uri->segment(3);
+		$this->MSudi->DeleteData('penerbit','id_penerbit', $id_penerbit);
+		redirect(site_url('Welcome/penerbit'));
 	}
 
 
