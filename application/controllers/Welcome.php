@@ -72,6 +72,7 @@ class Welcome extends CI_Controller {
 	// Data Bagian buku
 	public function buku()
 	{
+		$data['DataPencarianBuku']	=$this->MSudi->GetData('buku');
 		$data['content']='buku/buku';
 		$this->load->view('welcome_message', $data);
 	}
@@ -102,5 +103,12 @@ class Welcome extends CI_Controller {
 		redirect(site_url('Welcome/Buku'));
 
 	}
+	public function deletebuku()
+	{
+		$id_buku = $this->uri->segment(3);
+		$this->MSudi->DeleteData('buku', 'id_buku', $id_buku);
+		redirect(site_url('Welcome/buku'));
+	}
+
 
 }
