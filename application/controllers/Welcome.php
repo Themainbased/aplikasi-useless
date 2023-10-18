@@ -37,17 +37,18 @@ class Welcome extends CI_Controller {
 
 	public function penerbit()
 	{
-		$data['DataPencarianBuku']	=$this->MSudi->GetData('crud_db');
-		$data['content']='penerbit/VPenerbit';
-		$this->load->view('welcome_message');
+		$data['DataPencarianBuku']	=$this->MSudi->GetData('penerbit');
+		$data['content']='penerbit/penerbit';
+		$this->load->view('welcome_message', $data);
 	}
 
 	public function penerbitInsert()
 	{
-		$add['kd_buku']		= $this->input->post('kd_buku');
-		$add['judul_buku']	= $this->input->post('judul_buku');
-		$add['pengarang']	= $this->input->post('pengarang');
-		$add['penerbit']	= $this->input->post('penerbit');
+		$add['id_penerbit']		= $this->input->post('id_penerbit');
+		$add['nama']	= $this->input->post('nama');
+		$add['alamat']	= $this->input->post('alamat');
+		$add['kota']	= $this->input->post('kota');
+		$add['telepon']	= $this->input->post('telepon');
 
 		$this->MSudi->AddData('crud_db', $add);
 
@@ -78,13 +79,28 @@ class Welcome extends CI_Controller {
 	public function inputbuku()
 	{
 		$add['id_buku']		= $this->input->post('id_buku');
-		$add['kategori_buku']	= $this->input->post('kategori_buku');
-		$add['pengarang']	= $this->input->post('pengarang');
+		$add['kategori']	= $this->input->post('kategori');
+		$add['nama_buku']	= $this->input->post('nama_buku');
+		$add['harga']	= $this->input->post('harga');
+		$add['stok']	= $this->input->post('stok');
 		$add['penerbit']	= $this->input->post('penerbit');
-
-		$this->MSudi->AddData('tabel_buku', $add);
+		$this->MSudi->AddData('buku', $add);
 
 		redirect(site_url('Welcome/Buku'));
+	}
+	public function editbuku()
+	{
+		$id_buku 				= $this->input->post('id_buku');
+		$update['kategori'] 	= $this->input->post('kategori');
+		$update['nama_buku']	= $this->input->post('nama_buku');
+		$update['harga']	= $this->input->post('harga');
+		$update['stok']	= $this->input->post('stok');
+		$update['penerbit']	= $this->input->post('penerbit');
+		
+		$this->MSudi->UpdateData('buku', 'id_buku', $id_buku, $update);
+
+		redirect(site_url('Welcome/Buku'));
+
 	}
 
 }

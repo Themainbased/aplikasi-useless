@@ -27,8 +27,8 @@
             Master
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo site_url('Welcome/Buku')?>">Buku</a></li>
-            <li><a class="dropdown-item" href="#">Penerbit</a></li>
+            <li><a class="dropdown-item" href="<?php echo site_url('Welcome/buku')?>">Buku</a></li>
+            <li><a class="dropdown-item" href="<?php echo site_url('Welcome/penerbit')?>">Penerbit</a></li>
           </ul>
         </li>
       </ul>
