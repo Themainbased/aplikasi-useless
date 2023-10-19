@@ -33,7 +33,7 @@ class MSudi extends CI_Model
 
     function GetCariBuku($cari)
     {
-        $query = $this->db->query("Select * From tabel_buku where judul_buku like '%$cari%' ");
+        $query = $this->db->query("SELECT * From buku where nama_buku like '%$cari%' ");
         return $query;
 	}
 }

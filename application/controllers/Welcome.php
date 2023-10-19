@@ -117,6 +117,15 @@ class Welcome extends CI_Controller {
 		$this->MSudi->DeleteData('buku', 'id_buku', $id_buku);
 		redirect(site_url('Welcome/buku'));
 	}
+	public function pencarianbuku()
+    {
+        $cari = $this->input->post('cari');
+		$data['GetDataCariBuku'] = $this->MSudi->GetCariBuku($cari)->result();
+
+        // Memuat tampilan dengan hasil pencarian
+        $data['content'] = 'buku/pencarianbuku'; // Pastikan ini sesuai dengan nama tampilan Anda
+        $this->load->view('welcome_message', $data); // Sesuaikan dengan tampilan utama Anda
+    }
 
 
 }
