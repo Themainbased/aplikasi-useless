@@ -7,6 +7,7 @@
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Tambah">
       Add +
     </button>
+    <a href="<?php echo site_url('Welcome/pencarianpenerbit')?>" class="btn btn-outline-primary">Cari Penerbit</a>
     <!-- Button Tambah -->
 
     <!-- Modal Tambah -->

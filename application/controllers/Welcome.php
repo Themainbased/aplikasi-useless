@@ -73,8 +73,27 @@ class Welcome extends CI_Controller {
 		redirect(site_url('Welcome/penerbit'));
 	}
 
+	public function pencarianpenerbit()
+    {
+        $cari = $this->input->post('cari');
+		$data['GetCariPenerbit'] = $this->MSudi->GetCariPenerbit($cari)->result();
+
+        // Memuat tampilan dengan hasil pencarian
+        $data['content'] = 'penerbit/pencarianpenerbit'; // Pastikan ini sesuai dengan nama tampilan Anda
+        $this->load->view('welcome_message', $data); // Sesuaikan dengan tampilan utama Anda
+    }
 
 
+	
+	public function pengadaan() {
+        // Load model dan data
+        $this->load->model('MSudi');
+        $data['pengadaan'] = $this->MSudi->get_pengadaan();
+
+        // Tampilkan view dengan data
+		$data['content']='pengadaan';
+        $this->load->view('welcome_message', $data);
+    }
 
 
 	// Data Bagian buku
